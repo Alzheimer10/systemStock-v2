@@ -1,0 +1,245 @@
+<div >
+<loading></loading>       
+  <h3 class="">Facturas</h3>
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <button type="button" class="btn btn-default col-md-2 col-lg-2 right margin-10" ng-click="isCollapsed = !isCollapsed"><i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Nueva Factura</button>
+    </div>
+  </div>
+  <div uib-collapse="isCollapsed">
+    <form class="form-inline">
+      <div class="form-group">
+        <div ng-include src="'views/factura.html'"></div>
+      </div>
+    </form>
+  </div>
+
+  <div ng-show="isCollapsed">
+    <div class="col-md-10 col-lg-10 col-xs-12 col-md-offset-1 col-lg-offset-1 ">
+      <div class="col-xs-12 col-md-12 col-lg-12">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search fa-lg"></i></span>
+            <input ng-model="search" class="form-control col-md-11 col-lg-11 col-xs-11" type="text" placeholder="Buscar factura">
+          </div>
+      <div class="table table-responsive">
+        <table class="table stacktable">
+            <thead class="thead-inverse">
+            <tr>
+              <th >#</th>
+              <th >Cedula</th>
+              <th >Cliente</th>
+              <th >Celular</th>
+              <th >Fecha</th>
+              <th >Ver</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="factura in fact | filter:search">
+            <tr>
+              <td>{{factura.id}}</td>
+              <td>{{factura.ci}}</td>
+              <td>{{factura.cliente}}</td>
+              <td>{{factura.cel}}</td>
+              <td>{{factura.fecha}}</td>
+              <td><button type="button" class="btn btn info" data-toggle="modal" data-target=".bs-example-modal-lg" ng-click="abrir(factura,$index)" ><i class="fa fa-arrows-alt" aria-hidden="true"></i> Ver Factura</button></td>
+            </tr>
+          </tbody>
+        </table>
+        
+     </div>
+    </div>
+   </div>
+  </div>
+
+<!-- START MODAL FACTURA -->
+
+<div  ng-show="modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="panel panel-primary" style="background-color: #23BAB5!important">
+        <div class="panel-heading modal-title" id="myModalLabel" style="background-color: #23BAB5!important; border-color: #23BAB5!important">
+          <div class="modal-header">
+            <span  style="font-size: 1.5em; color: #fff;">Factura Nº{{modal.id}}</span> 
+            <button type="button" class="close" ng-click="clear()" data-dismiss="modal" aria-label="Close">
+              <span class="aria-hidden" aria-hidden="true" style="width: 100px; height: 100px">&times;</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="well well-lg">
+            <div class="row">
+              <div class="modal-content">
+                <div class="modal-body">
+                <button ng-show="classmodificar" class="btn btn-success" ng-click="classmodificar = !classmodificar">Modificar</button>
+                <button ng-show="classmodificar" class="btn btn-danger" data-dismiss="modal" ng-click="delete(model)" >Eliminar</button>
+                <button ng-show="classmodificar" class="btn btn-warning" data-dismiss="modal" ng-click="imprimir(modal)" >Imprimir</button>
+                
+                <button ng-show="!classmodificar" ng-click="classmodificar = !classmodificar" class="btn btn-info" >Cancelar</button>
+                
+                <button ng-show="!classmodificar" class="btn btn-danger" ng-click="update(modal)" data-dismiss="modal"> Guardar Modificaciones</button>
+
+                <!-- Open modal body -->
+                    <div class="col-xs-12 col-sm-12 col-lg-12 top">
+                          <div class="col-xs-8 col-sm-8 col-lg-8 center-text">
+                            <h1>SERVI CELL FAST, F-P</h1>
+                            <h6>LUIS EDUARDO TERAN ESCALANTE</h6>
+                            <h6>RIF: V-2016129-0</h6>
+                            <h5>Urb. La Granja Centro Comercial Free Market,</h5>
+                            <h5>Nivel PB Local Mini Tienda Nº Q02 Modulo 16 (M16-P.B.)</h5>
+                            <h5>Tlf: (0424) 433.82.91 Naguangua Edo.Carabobo</h5>
+                          </div>
+                          <div class="col-xs-2 col-sm-2 col-lg-2 center-text">
+                            <div class="row">
+                              <table>
+                                <tbody >
+                                  <tr>
+                                    <th>Fecha</th>
+                                  </tr>
+                                  <tr>
+                                    <td><input value="{{modal.fecha}}" class="col-xs-12 col-sm-12 col-lg-12" readonly type="text" name="dia" disabled></td>
+                                  </tr>
+                                  <tr >
+                                    <th colspan="3">ORDEN DE REPARACION</th>
+                                  </tr>
+                                  <tr >
+                                    <td colspan="3"><input value="{{modal.id}}" class="col-xs-12 col-sm-12 col-lg-12" readonly type="text" name="año" disabled></td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                    </div>
+                  <div class="box">
+                          <div class="input-group col-lg-3 col-sm-6 col-sx-12">
+                              <div class="input-group-addon"><span>Cliente</span></div>
+                            <input  value="{{modal.cliente}}" type="text" id="Cliente" name="Cliente" ng-model="modal.cliente" class="form-control" ng-disabled="classmodificar">
+                          </div>
+
+                          <div class="input-group col-lg-3 col-sm-6 col-sx-12">
+                              <div class="input-group-addon"><span>CI</span></div>
+                            <input ng-model="modal.ci" value="{{modal.ci}}"  type="text" id="CI" name="CI" class="form-control" ng-disabled="classmodificar">
+                          </div>
+                          
+                          <div class="input-group col-lg-3 col-sm-6 col-sx-12">
+                              <div class="input-group-addon"><span>Telefono</span></div>
+                            <input ng-model="modal.tlf" value="{{modal.tlf}}" type="text" id="Telfono" name="Telefono" class="form-control" ng-disabled="classmodificar">
+                          </div>
+
+                          <div class="input-group col-lg-3 col-sm-6 col-sx-12">
+                              <div class="input-group-addon"><span>Cel</span></div>
+                            <input ng-model="modal.cel" value="{{modal.cel}}" type="text" id="Cel" name="" class="form-control" ng-disabled="classmodificar">
+                          </div>
+
+                          <div class="input-group col-lg-12 col-sm-12 col-sx-12">
+                              <div class="input-group-addon"><span>Equipo</span></div>
+                            <input ng-model="modal.equipo" value="{{modal.equipo}}" type="text" id="Equipo" name="Equipo" class="form-control" ng-disabled="classmodificar">
+                          </div>
+
+                          <div class="input-group col-lg-4 col-sm-4 col-sx-12">
+                              <div class="input-group-addon"><span>Otro</span></div>
+                            <input ng-model="modal.otro" value="{{modal.otro}}" type="text" id="Otro-A" name="Otro-A" class="form-control" ng-disabled="classmodificar">
+                          </div>        
+                          <div class="input-group col-lg-4 col-sm-4 col-sx-12">
+                              <div class="input-group-addon"><span>Modelo</span></div>
+                            <input ng-model="modal.modelo" value="{{modal.modelo}}" type="text" id="Modelo" name="Modelo" class="form-control" ng-disabled="classmodificar">
+                          </div>
+
+                          <div class="input-group col-lg-4 col-sm-4 col-sx-12">
+                              <div class="input-group-addon"><span>Serial</span></div>
+                            <input ng-model="modal.serial" value="{{modal.serial}}" type="text" id="Serial" name="Serial" class="form-control" ng-disabled="classmodificar">
+                          </div>  
+
+                  <!-- BATERIA, MODELO, TAPA, RECLAMO GATANTIA -->
+                          <div class="input-group col-lg-3 col-sm-3 col-sx-4">
+                              <div class="input-group-addon"><span>Bateria*</span></div>
+                                <select ng-model="modal.bateria" ng-disabled="classmodificar">
+                                    <option value="SI" ng-selected="modal.bateria == 'SI'">SI</option>
+                                    <option value="NO" ng-selected="modal.bateria == 'NO'">NO</option>
+                                </select>
+                          </div>
+                          <div class="input-group col-lg-3 col-sm-3 col-sx-4">
+                              <div class="input-group-addon"><span>Sim*</span></div>
+                            <select ng-model="modal.sim" ng-disabled="classmodificar">
+                                  <option value="SI" ng-selected="modal.sim == 'SI'">SI</option>
+                                  <option value="NO" ng-selected="modal.sim == 'NO'">NO</option>
+                              </select>
+                          </div>  
+                         <div class="input-group col-lg-3 col-sm-3 col-sx-4">
+                              <div class="input-group-addon"><span>Tapa*</span></div>
+                            <select ng-model="modal.tapa" ng-disabled="classmodificar">
+                                  <option value="SI" ng-selected="modal.tapa == 'SI'" >SI</option>
+                                  <option value="NO" ng-selected="modal.tapa == 'NO'" >NO</option>
+                              </select>
+                          </div>  
+                          <div class="input-group col-lg-3 col-sm-3 col-sx-12">
+                              <div class="input-group-addon"><span>Garantia*</span></div>
+                              <select ng-model="modal.garantia" ng-disabled="classmodificar">
+                                  <option value="SI" ng-selected="modal.garantia == 'SI'" >SI</option>
+                                  <option value="NO" ng-selected="modal.garantia == 'NO'" >NO</option>
+                              </select>
+                          </div> 
+                    <!-- FALLA DE EL EQUIPO: NO INICIA, NO TRANSMITE; AUDIO, SE APAGA, SEÑAL -->
+                    <div class="input-group col-lg-12 col-sm-12 col-sx-12">
+                            <div class="input-group-addon"><span>Falla de el Equipo:</span></div>
+                            <input class="col-xs-12 col-sm-12 col-lg-12" ng-model="modal.fallaequipo" value="{{modal.fallaequipo}}">
+                    </div>  
+                    <!-- OTROS: -->
+                    <div class="input-group col-lg-12 col-sm-12 col-sx-12">
+                            <div class="input-group-addon"><span>Descripcion de la falla:</span></div>
+                              <input ng-model="modal.otros" value="{{modal.otros}}" class="col-xs-12 col-sm-12 col-lg-12 " ng-disabled="classmodificar">
+                    </div>  
+                    <!-- INTERMINENTE, PERMANENTE, ESTADP DE LA CARCASA Y/O PANTALLA, ROTA, REGULAR, RAYADA, BUENA -->
+                    <div class="input-group col-lg-3 col-sm-4 col-sx-12">
+                          <select ng-model="modal.fallaestatus" class="col-xs-12 col-sm-12 col-lg-12 " ng-disabled="classmodificar">
+                            <option value="Intermitente" ng-selected="modal.fallaestatus == 'Intermitente'">Intermitente</option>
+                            <option value="Permanente" ng-selected="modal.fallaestatus == 'Permanente'">Permanente</option>
+                          </select>
+                    </div>        
+
+                    <div class="input-group col-lg-3 col-sm-4 col-sx-12">
+                          <div class="input-group-addon"><span>Estado de la Carcasa:*</span></div>
+                          <select ng-model="modal.carcasaestatus"  ng-disabled="classmodificar">
+                                <option value="Rota" ng-selected="modal.carcasaestatus == 'Rota'">Rota</option>
+                                <option value="Regular" ng-selected="modal.carcasaestatus == 'Regular'">Regular</option>
+                                <option value="Rayada" ng-selected="modal.carcasaestatus == 'Rayada'">Rayada</option>
+                                <option value="Buena" ng-selected="modal.carcasaestatus == 'Buena'">Buena</option>
+                          </select>
+                    </div>    
+
+                    <div class="input-group col-lg-3 col-sm-4 col-sx-12">
+                          <div class="input-group-addon"><span>Estado de la Pantalla:*</span></div>
+                          <select ng-model="modal.pantallaestatus" ng-disabled="classmodificar">
+                              <option value="Rota" ng-selected="modal.pantallaestatus == 'Rota'" >Rota</option>
+                              <option value="Regular" ng-selected="modal.pantallaestatus == 'Regular'" >Regular</option>
+                              <option value="Rayada" ng-selected="modal.pantallaestatus == 'Rayada'" >Rayada</option>
+                              <option value="Buena" ng-selected="modal.pantallaestatus == 'Buena'" >Buena</option>
+                          </select>
+                    </div>
+            
+                    <div class="col-xs-12 col-sm-12 col-lg-12">
+                          <div class="col-xs-12 col-sm-10 col-lg-10">
+                            <div class="input-group">
+                              <span class="input-group-addon">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                              <input ng-model="modal.total" value="{{modal.total}}" type="text" id="Total" class="form-control" placeholder="" ng-disabled="classmodificar">
+                            </div>
+                            <div class="input-group">
+                              <span class="input-group-addon">Abono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                              <input ng-model="modal.abono" value="{{modal.abono}}" type="text" id="Abono" class="form-control" placeholder="" ng-disabled="classmodificar">
+                            </div>
+                            <div class="input-group">
+                              <span type="number" min="0" class="input-group-addon">Resta:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                              <input type="text" name="resta" class="form-control"  value="{{modal.total-modal.abono}}" placeholder="" disabled>
+                            </div>  
+                          </div>  
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+                <!-- cierrre modal Body-->
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- END MODAL FACTURA -->

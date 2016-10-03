@@ -1,0 +1,75 @@
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url("../fonts/roboto/Roboto-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Roboto-Black';
+  src: url("../fonts/roboto/Roboto-Black.ttf") format("truetype");
+}@font-face {
+  font-family: 'Roboto-ThinItalic';
+  src: url("../fonts/roboto/Roboto-ThinItalic.ttf") format("truetype");
+}
+body{
+  /*
+  font-family: 'Muli', sans-serif;
+  font-family: 'Questrial', sans-serif;
+  */
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.5em!important;
+}
+.right{
+  float: right!important;
+}
+.left{
+  float: right!important;
+}
+.margin-17{ margin: 17px!important; }
+.margin-16{ margin: 16px!important; }
+.margin-15{ margin: 15px!important; }
+.margin-14{ margin: 14px!important; }
+.margin-13{ margin: 13px!important; }
+.margin-12{ margin: 12px!important; }
+.margin-11{ margin: 11px!important; }
+.margin-10{ margin: 10px!important; }
+.margin-9{ margin: 9px!important; }
+.margin-8{ margin: 8px!important; }
+.margin-7{ margin: 7px!important; }
+.margin-6{ margin: 6px!important; }
+.margin-5{ margin: 5px!important; }
+.margin-4{ margin: 4px!important; }
+.margin-3{ margin: 3px!important; }
+.margin-2{ margin: 2px!important; }
+.margin-1{ margin: 1px!important; }
+.margin-0{ margin: 0px!important; }
+
+.padding-2{ padding: 3px!important; }
+.padding-1{ padding: 1px!important; }
+.padding-0{ padding: 0px!important; }
+
+.error
+{
+  border-color: red !important;
+}
+.success
+{
+  border-color: green !important;
+
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+
+}

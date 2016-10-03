@@ -1,0 +1,159 @@
+
+<style type="text/css" media="screen">
+
+</style>
+	<!-- TOP -->
+	<div uib-collapse="isCollapsed">
+    <div class="panel panel-primary" style="background-color: #23BAB5!important">
+      <div class="panel-heading" style="background-color: #23BAB5!important; border-color: #23BAB5!important"><h4>Nueva Factura</h4></div>
+	        <div class="well well-lg">
+<<<<<<< HEAD
+	          <div class="row">
+					<div class="box">
+					<form action="" name="factura" id="factura">
+						<div class="col-xs-12 col-sm-12 col-lg-12">
+							<div class="input-group col-lg-3 col-sm-6 col-sx-12">
+							    <div class="input-group-addon"><span>Cliente*</span></div>
+								<input ng-class="{error: factura.cliente.$error.required && factura.cliente.$touched, success: factura.cliente.$valid}"  ng-model="data.cliente" type="text"  name="cliente" class="form-control">
+								<span ng-show="factura.cliente.$error.required && factura.cliente.$touched">Campo requerido</span>
+							</div>
+
+							<div class="input-group col-lg-3 col-sm-6 col-sx-12">
+							    <div class="input-group-addon"><span>CI*</span></div>
+								<input ng-class="{error: factura.CI.$error.required && factura.CI.$touched, success:factura.CI.$valid}" ng-model="data.ci" type="text" id="CI"  class="form-control">
+								 <span ng-show="factura.CI.$error.required && factura.CI.$touched">Campo requerido</span>
+							</div>
+
+							<div class="input-group col-lg-3 col-sm-6 col-sx-12">
+							    <div class="input-group-addon"><span>Telefono*</span></div>
+								<input ng-class="{error: factura.Telefono.$error.required && factura.Telefono.$touched, success: factura.Telefono.$valid}" ng-model="data.telefono" type="text" id="Telfono" name="Telefono" class="form-control">
+							</div>
+
+							<div class="input-group col-lg-3 col-sm-6 col-sx-12">
+							    <div class="input-group-addon"><span>Cel*</span></div>
+								<input ng-class="{error: factura.Cel.$error.required && factura.Cel.$touched, success: factura.Cel.$valid}" ng-model="data.cel" type="text" id="Cel" name="Cel" class="form-control">
+							</div>
+
+							<div class="input-group col-lg-12 col-sm-12 col-sx-12">
+							    <div class="input-group-addon"><span>Equipo*</span></div>
+								<input ng-class="{error: factura.Equipo.$error.required && factura.Equipo.$touched, success: factura.Equipo.$valid}" ng-model="data.equipo" type="text" id="Equipo" name="Equipo" class="form-control">
+							</div>
+
+							<div class="input-group col-lg-4 col-sm-4 col-sx-12">
+							    <div class="input-group-addon"><span>Otro*</span></div>
+								<input ng-class="{error: factura.Otro-A.$error.required && factura.Otro-A.$touched, success: factura.Otro-A.$valid}" ng-model="data.otro" type="text" id="Otro-A" name="Otro-A" class="form-control">
+							</div>				
+							<div class="input-group col-lg-4 col-sm-4 col-sx-12">
+							    <div class="input-group-addon"><span>Modelo*</span></div>
+								<input ng-class="{error: factura.Modelo.$error.required && factura.Modelo.$touched, success: factura.Modelo.$valid}" ng-model="data.modelo" type="text" id="Modelo" name="Modelo" class="form-control">
+							</div>
+
+							<div class="input-group col-lg-4 col-sm-4 col-sx-12">
+							    <div class="input-group-addon"><span>Serial*</span></div>
+								<input ng-class="{error: factura.Serial.$error.required && factura.Serial.$touched, success: factura.Serial.$valid}" ng-model="data.serial" type="text" id="Serial" name="Serial" class="form-control">
+							</div>	
+
+							<div class="input-group col-lg-3 col-sm-3 col-sx-4">
+							    <div class="input-group-addon"><span>Bateria*</span></div>
+								<div class="">
+				    				<select ng-class="{error: factura.bateria.$error.required && factura.bateria.$touched, success: factura.bateria.$valid}"  ng-model="data.bateria" name="bateria">
+					      				<option value="SI">SI</option>
+					      				<option value="NO">NO</option>
+					    			</select>
+								</div>
+							</div>
+
+							<div class="input-group col-lg-3 col-sm-3 col-sx-4">
+							    <div class="input-group-addon"><span>Sim*</span></div>
+								<select ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}"  ng-model="data.sim">
+				      				<option value="SI">SI</option>
+				      				<option value="NO">NO</option>
+				    			</select>
+							</div>	
+
+							<div class="input-group col-lg-3 col-sm-3 col-sx-4">
+							    <div class="input-group-addon"><span>Tapa*</span></div>
+								<select ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}"  ng-model="data.tapa">
+				      				<option value="SI">SI</option>
+				      				<option value="NO">NO</option>
+				    			</select>
+							</div>	
+
+							<div class="input-group col-lg-3 col-sm-3 col-sx-12">
+							    <div class="input-group-addon"><span>Garantia*</span></div>
+								<select ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}"  ng-model="data.garantia">
+				      				<option value="SI">SI</option>
+				      				<option value="NO">NO</option>
+				    			</select>
+							</div>	
+
+							<div class="input-group col-lg-4 col-sm-6 col-sx-12">
+							    <div class="input-group-addon"><span>Falla del Equipo*</span></div>
+								<select ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}" class="col-xs-12 col-sm-12 col-lg-12" name="multipleSelect" id="multipleSelect" ng-model="data.fallaequipo" multiple>
+			      						<option class="" value="No inicia">No inicia</option>
+			      						<option class="" value="No transmite">No transmite</option>
+			      						<option class="" value="Audio">Audio</option>
+			      						<option class="" value="Se apaga">Se apaga</option>
+			      						<option class="" value="Señal">Señal</option>
+			      						<option class="" value="Otros">Otros</option>
+			   					</select>
+							</div>		
+
+							<div class="input-group col-lg-12 col-sm-12 col-sx-12">
+							    <div class="input-group-addon"><span>Descripcion de la falla:*</span></div>
+								<input ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}" ng-model="data.otros" type="text" id="Otro-B" name="Otro-B" class="form-control">
+							</div>			
+
+							<div class="input-group col-lg-3 col-sm-4 col-sx-12">
+								<select ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}"  ng-model="data.fallaestatus" class="col-xs-12 col-sm-12 col-lg-12 ">
+									<option value="Intermitente">Intermitente</option>
+									<option value="Permanente">Permanente</option>
+								</select>
+							</div>				
+
+							<div class="input-group col-lg-3 col-sm-4 col-sx-12">
+							    <div class="input-group-addon"><span>Estado de la Carcasa:*</span></div>
+								<select ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}"  ng-model="data.carcasaestatus">
+				      				<option value="Rota">Rota</option>
+				      				<option value="Regular">Regular</option>
+				      				<option value="Rayada">Rayada</option>
+				      				<option value="Buena">Buena</option>
+				    			</select>
+							</div>		
+
+							<div class="input-group col-lg-3 col-sm-4 col-sx-12">
+							    <div class="input-group-addon"><span>Estado de la Pantalla:*</span></div>
+								<select ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}"  ng-model="data.pantallaestatus">
+				      				<option value="Rota">Rota</option>
+				      				<option value="Regular">Regular</option>
+				      				<option value="Rayada">Rayada</option>
+				      				<option value="Buena">Buena</option>
+				    			</select>
+							</div>		
+						    <div class="col-lg-3 col-xs-12 col-sm-12">
+									<div class="input-group col-xs-12 col-sm-12 col-lg-12">
+									  <span class="input-group-addon">Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									  <input ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}" ng-model="data.total" type="text" id="Total" class="form-control" placeholder="">
+									</div>
+									<div class="input-group col-xs-12 col-sm-12 col-lg-12">
+									  <span class="input-group-addon">Abono:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									  <input ng-class="{error: factura.nombre.$error.required && factura.nombre.$touched, success: factura.nombre.$valid}" ng-model="data.abono" type="text" id="Abono" class="form-control" placeholder="">
+									</div>
+									<div class="input-group col-xs-12 col-sm-12 col-lg-12">
+									  <span type="number" min="0" class="input-group-addon">Resta:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									  <input type="text" name="resta" class="form-control" value="{{data.total-data.abono}}" placeholder="">
+								</div>	
+							</div>								
+						</div>
+						<!-- Falla de el Equipo: -->
+						<button class="btn btn-default col-md-2 col-lg-2 right margin-10" ng-click="guardar(data)">Guardar</button>
+	 			</form>
+					</div> 
+
+	        </div>
+    </div>
+  </div>
+	<div class="factura">
+		<!-- MID -->
+
+	</div>

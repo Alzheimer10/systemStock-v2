@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/style-load.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/global.css"/>
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap/bootstrap.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="styles/font-awesome.min.css"  media="screen,projection"/>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="js/ui-bootstrap-tpls-2.0.1.min.js"></script> 
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/ng-notify/dist/ng-notify.min.js"></script>
+
+     <script src="scripts/app.js"></script>
+     <script src="scripts/controllers/inventario.js"></script>
+     <script src="scripts/controllers/facturas.js"></script>
+     <script src="scripts/controllers/ventas.js"></script>
+
+    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <!--<link href='https://fonts.googleapis.com/css?family=Muli|Questrial|Rubik' rel='stylesheet' type='text/css'>-->
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/ng-notify/dist/ng-notify.min.css"">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="systemStockApp" class="container-fluid" >
+  <nav class="navbar navbar-new navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+          <!-- logo -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand"  href="#/"><i class="fa fa-android fa-lg"></i> SERVI CELL FAST, F-P</a>
+       <!--        <a class="navbar-brand"  href="#/">systemStock</a> -->
+          </div>
+          <!-- menu -->
+          <div class="collapse navbar-collapse navbar-right" id="navbar1">
+            <div class=" navbar-right">
+              <ul class="nav navbar-nav">
+                <li><a ng-href="#/home"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</a></li>
+                <li><a ng-href="#/facturas"><i class="fa fa-files-o fa-lg" aria-hidden="true"></i> Facturas</a></li>
+                <li><a ng-href="#/inventario"><i class="fa fa-inbox fa-lg" aria-hidden="true"></i> Inventario</a></li>
+                <li><a ng-href="#/ventas"><i class="fa fa-sellsy fa-lg" aria-hidden="true"></i> Ventas</a></li>
+              </ul>
+            </div>
+          </div>
+      </div>
+  </nav>
+  <div class="col-sm-12 col-md-12 col-lg-12" style="margin-top: 50px;">
+    <div ng-view>
+      
+    </div>
+  </div>
+
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+    /* !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+     (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+     r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+     }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');*/
+
+  </script>
+
+</html>
